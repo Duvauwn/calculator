@@ -9,6 +9,13 @@ body {
     display: flex;
     justify-content: center;
 }
+#calculator {
+    display:flex;
+    flex-direction: column;
+    background-color: rgba(64, 101, 224, 0.411);
+    padding:20px;
+    border-radius: 5%;
+}
 #display {
     display:flex;
     justify-content:flex-end;
