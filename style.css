@@ -1,0 +1,40 @@
+html {
+    font-family: monospace;
+    background-image:url('./board.jpg');
+    height:100vh;
+    width:100vw;
+    color:thistle;
+}
+body {
+    display: flex;
+    justify-content: center;
+}
+#display {
+    display:flex;
+    justify-content:flex-end;
+    font-size:30px;
+    border: 1px solid black;
+}
+#title {
+    text-align: center;
+    font-size:60px;
+}
+
+#buttons {
+    display: flex;
+    flex-wrap:wrap;
+    width:600px;
+    height:500px;
+    align-items:flex-start;
+    justify-content: flex-start;
+}
+button {
+    width:150px;
+    height: 125px;
+    flex: 0 1 auto;
+    font-size:50px;
+    background-color:transparent;
+    color:thistle;
+    border-radius: 5%;
+    border: 1px solid black;
+}

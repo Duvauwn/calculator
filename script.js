@@ -25,13 +25,9 @@ function operate(operator, a, b) {
         return divide(a, b);
     }
 }
-//Manipulating the DOM
-let numbers = document.querySelector('#numbers');
+display = document.querySelector('#display');
 
-for (let i = 0; i <= 9; i++) {
-    let number = document.createElement('button');
-    number.classList.add('number');
-    number.textContent = i;
+generate = document.createElement('p');
+generate.textContent = '0';
 
-    numbers.appendChild(number);
-}
+display.appendChild(generate)
