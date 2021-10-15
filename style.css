@@ -15,12 +15,13 @@ body {
     background-color: rgba(64, 101, 224, 0.411);
     padding:20px;
     border-radius: 5%;
+    gap:20px;
 }
 #display {
     display:flex;
     justify-content:flex-end;
     font-size:30px;
-    border: 1px solid black;
+    border: 1px solid thistle;
 }
 #title {
     text-align: center;
@@ -29,11 +30,28 @@ body {
 
 #buttons {
     display: flex;
+    flex-direction:column;
     flex-wrap:wrap;
-    width:600px;
+    width:max-content;
     height:500px;
     align-items:flex-start;
     justify-content: flex-start;
+    gap:20px;
+}
+#number {
+    display: flex;
+    flex-wrap:wrap;
+    width:450px;
+    height:500px;
+}
+#operator {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+}
+#other {
+    display: flex;
+    justify-content: flex-end;
 }
 button {
     width:150px;
@@ -43,5 +61,5 @@ button {
     background-color:transparent;
     color:thistle;
     border-radius: 5%;
-    border: 1px solid black;
+    border: 1px solid thistle;
 }

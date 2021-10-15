@@ -31,3 +31,12 @@ generate = document.createElement('p');
 generate.textContent = '0';
 
 display.appendChild(generate)
+
+let buttons = document.querySelectorAll('#number');
+for (let i = 0; i < 9; i++) {
+    buttons.forEach(button, function () {
+        button.addEventListener('click', function () {
+            generate.textContent = button.textContent;
+        })
+    })
+}
