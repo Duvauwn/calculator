@@ -27,16 +27,26 @@ function operate(operator, a, b) {
 }
 display = document.querySelector('#display');
 
-generate = document.createElement('p');
-generate.textContent = '0';
+value = document.createElement('p');
+value.textContent = '0';
 
-display.appendChild(generate)
+display.appendChild(value);
 
-let buttons = document.querySelectorAll('#number');
-for (let i = 0; i < 9; i++) {
-    buttons.forEach(button, function () {
-        button.addEventListener('click', function () {
-            generate.textContent = button.textContent;
-        })
+let operation = document.querySelectorAll('.operators')
+
+let buttons = document.querySelector('#number');
+number = document.querySelectorAll('.numbers');
+number.forEach(element => {
+    element.addEventListener('click', function () {
+        let first = value.textContent;
+        value.textContent += element.textContent;
+        console.log(first);
     })
-}
+});
+operation.forEach(operand => {
+    operand.addEventListener('click', function () {
+        let static = value.textContent;
+        console.log(static);
+        value.textContent += operand.textContent;
+    })
+})
