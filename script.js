@@ -25,6 +25,14 @@ function operate(operator, a, b) {
         return divide(a, b);
     }
 }
+
+function done() {
+    let after = parseInt(downer.textContent);
+    final = operate(op, left, after);
+    upper.textContent = final;
+    downer.textContent = '0';
+}
+
 let display = document.querySelector('#display');
 let upper = document.createElement('div');
 let downer = document.createElement('div');
@@ -39,26 +47,28 @@ numbers.forEach((button) => {
         downer.textContent += button.textContent;
     })
 })
+
 let before;
 let op;
 let left;
-let regexp = /\+|\-|\*|\//g;
+
 let operators = document.querySelectorAll('.operators');
 operators.forEach((button) => {
     button.addEventListener('click', function () {
-        upper.textContent = downer.textContent + button.textContent;
-        downer.textContent = '';
-        before = upper.textContent;
-        left = parseInt(before.substring(0, before.length - 1));
-        op = before.charAt(before.length - 1);
-        console.log([left, op]);
-        return [left, op];
+        if (upper.textContent == '0') {
+            upper.textContent = downer.textContent + button.textContent;
+            downer.textContent = '';
+            before = upper.textContent;
+            left = parseInt(before.substring(0, before.length - 1));
+            op = before.charAt(before.length - 1);
+            console.log([left, op]);
+            return [left, op];
+        }
+        else if (upper.textContent != '0') {
+            upper.textContent += button.textContent;
+        }
+
     })
 })
 let equal = document.querySelector('#equal');
-equal.addEventListener('click', function () {
-    let after = parseInt(downer.textContent);
-    final = operate(op, left, after);
-    upper.textContent = final;
-    downer.textContent = '';
-})
+equal.addEventListener('click', done)
