@@ -12,41 +12,50 @@ function divide(a, b) {
     return a / b;
 }
 function operate(operator, a, b) {
-    if (operator == add) {
+    if (operator == '+') {
         return add(a, b);
     }
-    else if (operator == subtract) {
+    else if (operator == '-') {
         return subtract(a, b);
     }
-    else if (operator == multiply) {
+    else if (operator == '*') {
         return multiply(a, b);
     }
-    else if (operator == divide) {
+    else if (operator == '/') {
         return divide(a, b);
     }
 }
-display = document.querySelector('#display');
+let display = document.querySelector('#display')
 
-value = document.createElement('p');
-value.textContent = '0';
+let content = document.createElement('p');
 
-display.appendChild(value);
 
-let operation = document.querySelectorAll('.operators')
+let number = document.querySelectorAll('.numbers');
+let val = []
+number.forEach((button) => {
+    button.addEventListener('click', function () {
 
-let buttons = document.querySelector('#number');
-number = document.querySelectorAll('.numbers');
-number.forEach(element => {
-    element.addEventListener('click', function () {
-        let first = value.textContent;
-        value.textContent += element.textContent;
-        console.log(first);
+        display.appendChild(content);
+
+        val.push(button.textContent);
+        let val1 = val.join('')
+        content.textContent = val1;
+        console.log(val1);
     })
-});
-operation.forEach(operand => {
-    operand.addEventListener('click', function () {
-        let static = value.textContent;
-        console.log(static);
-        value.textContent += operand.textContent;
+})
+let operators = document.querySelectorAll('.operators');
+operators.forEach((button) => {
+    button.addEventListener('click', function () {
+        val.push(button.textContent);
+        let val2 = val.join('');
+        content.textContent = val2;
     })
+})
+let answer = document.querySelector('#answer');
+let regexp = /\+|\*|\/|\-/g;
+answer.addEventListener('click', function () {
+    let str = content.textContent;
+    let ans = [...str.matchAll(regexp)];
+    console.log(ans[0]);
+
 })
