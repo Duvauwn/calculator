@@ -48,27 +48,46 @@ numbers.forEach((button) => {
     })
 })
 
-let before;
+let str;
 let op;
 let left;
+let regex = /\+|\-|\*|\//;
 
 let operators = document.querySelectorAll('.operators');
 operators.forEach((button) => {
     button.addEventListener('click', function () {
-        if (upper.textContent == '0') {
-            upper.textContent = downer.textContent + button.textContent;
-            downer.textContent = '';
-            before = upper.textContent;
-            left = parseInt(before.substring(0, before.length - 1));
-            op = before.charAt(before.length - 1);
-            console.log([left, op]);
-            return [left, op];
+        if (regex.test(upper.textContent) == true) {
+            operators.disabled = true;
         }
-        else if (upper.textContent != '0') {
-            upper.textContent += button.textContent;
+        else {
+            if (upper.textContent == '0') {
+                upper.textContent = downer.textContent + button.textContent;
+                downer.textContent = '';
+                str = upper.textContent;
+                left = parseInt(str.substring(0, str.length - 1));
+                op = str.charAt(str.length - 1);
+                console.log([left, op, str]);
+                return [left, op, str];
+            }
+            else if (upper.textContent != '0') {
+                upper.textContent += button.textContent;
+                str = upper.textContent;
+                left = parseInt(str.substring(0, str.length - 1))
+                op = str.charAt(str.length - 1);
+                console.log(str);
+                return [left, str, op];
+            }
         }
-
     })
 })
 let equal = document.querySelector('#equal');
 equal.addEventListener('click', done)
+
+let clear = document.querySelector('#clear');
+clear.addEventListener('click', function () {
+    upper.textContent = '0';
+    downer.textContent = '';
+    left = undefined;
+    str = undefined;
+    op = undefined;
+})
