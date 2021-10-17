@@ -22,6 +22,9 @@ function operate(operator, a, b) {
         return multiply(a, b);
     }
     else if (operator == '/') {
+        if (b == 0) {
+            return alert('You Cant Divide By Zero!');
+        }
         return divide(a, b);
     }
 }
@@ -64,7 +67,7 @@ operators.forEach((button) => {
                 upper.textContent = downer.textContent + button.textContent;
                 downer.textContent = '';
                 str = upper.textContent;
-                left = parseInt(str.substring(0, str.length - 1));
+                left = parseFloat(str.substring(0, str.length - 1));
                 op = str.charAt(str.length - 1);
                 console.log([left, op, str]);
                 return [left, op, str];
@@ -72,7 +75,7 @@ operators.forEach((button) => {
             else if (upper.textContent != '0') {
                 upper.textContent += button.textContent;
                 str = upper.textContent;
-                left = parseInt(str.substring(0, str.length - 1))
+                left = parseFloat(str.substring(0, str.length - 1))
                 op = str.charAt(str.length - 1);
                 console.log(str);
                 return [left, str, op];
