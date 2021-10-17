@@ -25,37 +25,40 @@ function operate(operator, a, b) {
         return divide(a, b);
     }
 }
-let display = document.querySelector('#display')
+let display = document.querySelector('#display');
+let upper = document.createElement('div');
+let downer = document.createElement('div');
+upper.textContent = '0';
+display.appendChild(upper);
+display.appendChild(downer);
 
-let content = document.createElement('p');
 
-
-let number = document.querySelectorAll('.numbers');
-let val = []
-number.forEach((button) => {
+let numbers = document.querySelectorAll('.numbers')
+numbers.forEach((button) => {
     button.addEventListener('click', function () {
-
-        display.appendChild(content);
-
-        val.push(button.textContent);
-        let val1 = val.join('')
-        content.textContent = val1;
-        console.log(val1);
+        downer.textContent += button.textContent;
     })
 })
+let before;
+let op;
+let left;
+let regexp = /\+|\-|\*|\//g;
 let operators = document.querySelectorAll('.operators');
 operators.forEach((button) => {
     button.addEventListener('click', function () {
-        val.push(button.textContent);
-        let val2 = val.join('');
-        content.textContent = val2;
+        upper.textContent = downer.textContent + button.textContent;
+        downer.textContent = '';
+        before = upper.textContent;
+        left = parseInt(before.substring(0, before.length - 1));
+        op = before.charAt(before.length - 1);
+        console.log([left, op]);
+        return [left, op];
     })
 })
-let answer = document.querySelector('#answer');
-let regexp = /\+|\*|\/|\-/g;
-answer.addEventListener('click', function () {
-    let str = content.textContent;
-    let ans = [...str.matchAll(regexp)];
-    console.log(ans[0]);
-
+let equal = document.querySelector('#equal');
+equal.addEventListener('click', function () {
+    let after = parseInt(downer.textContent);
+    final = operate(op, left, after);
+    upper.textContent = final;
+    downer.textContent = '';
 })

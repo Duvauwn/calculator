@@ -22,6 +22,9 @@ body {
     justify-content:flex-end;
     font-size:30px;
     border: 1px solid thistle;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: all 0.7s;
 }
 #title {
     text-align: center;
